@@ -31,7 +31,7 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 
-	// Konstanta untuk grade gaji
+	// Tambahkan konstanta untuk grade gaji
 	private static final int GRADE_1_SALARY = 3000000;
 	private static final int GRADE_2_SALARY = 5000000;
 	private static final int GRADE_3_SALARY = 7000000;
