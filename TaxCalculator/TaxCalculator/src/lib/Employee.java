@@ -36,6 +36,11 @@ public class Employee {
 		MALE, FEMALE
 	}
 
+	// Konstanta untuk grade gaji
+	private static final int GRADE_1_SALARY = 3000000;
+	private static final int GRADE_2_SALARY = 5000000;
+	private static final int GRADE_3_SALARY = 7000000;
+
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
 			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, Gender gender) {
 		this.employeeId = employeeId;
@@ -60,22 +65,20 @@ public class Employee {
 	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
 	 */
 
+	// Method untuk mengatur gaji bulanan berdasarkan grade
 	public void setMonthlySalary(int grade) {
-		if (grade == 1) {
-			monthlySalary = 3000000;
-			if (isForeigner) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		} else if (grade == 2) {
-			monthlySalary = 5000000;
-			if (isForeigner) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
-		} else if (grade == 3) {
-			monthlySalary = 7000000;
-			if (isForeigner) {
-				monthlySalary = (int) (3000000 * 1.5);
-			}
+		switch (grade) {
+			case 1:
+				monthlySalary = isForeigner ? GRADE_1_SALARY + (int) (GRADE_1_SALARY * 0.5) : GRADE_1_SALARY;
+				break;
+			case 2:
+				monthlySalary = isForeigner ? GRADE_2_SALARY + (int) (GRADE_2_SALARY * 0.5) : GRADE_2_SALARY;
+				break;
+			case 3:
+				monthlySalary = isForeigner ? GRADE_3_SALARY + (int) (GRADE_3_SALARY * 0.5) : GRADE_3_SALARY;
+				break;
+			default:
+				throw new IllegalArgumentException("Invalid grade");
 		}
 	}
 
